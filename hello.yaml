@@ -10,4 +10,7 @@ task_schemas:
 
 # Workflow
 tasks:
-  - schema: greet   
+  - schema: greet
+  - schema: greet
+    inputs:
+      name: dumbass
