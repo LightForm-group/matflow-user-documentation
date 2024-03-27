@@ -1,0 +1,13 @@
+# Task schema
+task_schemas:
+- objective: greet  
+  inputs:
+    - parameter: name
+      default_value: "World"
+  actions:
+    - commands:
+      - command: echo "Hello, <<parameter:name>>!"
+
+# Workflow
+tasks:
+  - schema: greet   
