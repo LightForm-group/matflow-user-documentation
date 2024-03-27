@@ -3,14 +3,17 @@ task_schemas:
 - objective: greet  
   inputs:
     - parameter: name
-      default_value: "World"
+      default_value: World
+    - parameter: greeting
+      default_value: Hello
   actions:
     - commands:
-      - command: echo "Hello, <<parameter:name>>!"
+      - command: echo "<<parameter:greeting>>, <<parameter:name>>!"
 
 # Workflow
 tasks:
   - schema: greet
   - schema: greet
     inputs:
+      greeting: What's up
       name: dumbass
