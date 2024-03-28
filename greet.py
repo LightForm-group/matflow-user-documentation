@@ -1,3 +1,3 @@
 def greet(greeting: str, name: str):
     """Return a greeting"""
-    print(f"{greeting}, {name}!")
+    return {"string_to_print": f"{greeting}, {name}!"}

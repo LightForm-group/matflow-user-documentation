@@ -16,6 +16,8 @@ task_schemas:
       default_value: World
     - parameter: greeting
       default_value: Hello
+  outputs:
+    - parameter: string_to_print
   actions:
     - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/greet.py>>
       script_data_in: direct
@@ -25,6 +27,13 @@ task_schemas:
         - scope:
             type: any
           environment: python_env
+
+- objective: print
+  inputs:
+    - parameter: string_to_print
+  actions:
+    - commands:
+      - command: echo "<<parameter:string_to_print>>"
 
 # Workflow
 tasks:
@@ -37,4 +46,5 @@ tasks:
     inputs:
       greeting: Out of the way
       name: dopey
+  - schema: print
       
