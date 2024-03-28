@@ -2,49 +2,49 @@
 task_schemas:
 - objective: greet  
   inputs:
-    - parameter: name
-      default_value: World
-    - parameter: greeting
-      default_value: Hello
+  - parameter: name
+    default_value: World
+  - parameter: greeting
+    default_value: Hello
   actions:
-    - commands:
-      - command: echo "<<parameter:greeting>>, <<parameter:name>>!"
+  - commands:
+    - command: echo "<<parameter:greeting>>, <<parameter:name>>!"
 
 - objective: python_greet
   inputs:
-    - parameter: name
-      default_value: World
-    - parameter: greeting
-      default_value: Hello
+  - parameter: name
+    default_value: World
+  - parameter: greeting
+    default_value: Hello
   outputs:
-    - parameter: string_to_print
+  - parameter: string_to_print
   actions:
-    - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/greet.py>>
-      script_data_in: direct
-      script_data_out: direct
-      script_exe: python_script
-      environments:
-        - scope:
-            type: any
-          environment: python_env
+  - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/greet.py>>
+    script_data_in: direct
+    script_data_out: direct
+    script_exe: python_script
+    environments:
+    - scope:
+        type: any
+      environment: python_env
 
 - objective: print
   inputs:
-    - parameter: string_to_print
+  - parameter: string_to_print
   actions:
-    - commands:
-      - command: echo "<<parameter:string_to_print>>"
+  - commands:
+    - command: echo "<<parameter:string_to_print>>"
 
 # Workflow
 tasks:
-  - schema: greet
-  - schema: greet
-    inputs:
-      greeting: What's up
-      name: dumbass
-  - schema: python_greet
-    inputs:
-      greeting: Out of the way
-      name: dopey
-  - schema: print
+- schema: greet
+- schema: greet
+  inputs:
+    greeting: What's up
+    name: dumbass
+- schema: python_greet
+  inputs:
+    greeting: Out of the way
+    name: dopey
+- schema: print
       
