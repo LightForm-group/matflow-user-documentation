@@ -8,7 +8,7 @@ task_schemas:
     default_value: Hello
   actions:
   - commands:
-    - command: echo "<<parameter:greeting>>, <<parameter:name>>!"
+    - command: echo "<<parameter:greeting>>, <<parameter:name>>!" > printed_string.txt
 
 - objective: python_greet
   inputs:
@@ -33,7 +33,7 @@ task_schemas:
   - parameter: string_to_print
   actions:
   - commands:
-    - command: echo "<<parameter:string_to_print>>"
+    - command: echo "<<parameter:string_to_print>>" > printed_string.txt
 
 # Workflow
 tasks:
@@ -47,4 +47,17 @@ tasks:
     greeting: Out of the way
     name: dopey
 - schema: print
+- schema: print
+  inputs:
+    string_to_print: another string to print!
+- schema: print
+  # Explicitly reference output parameter from a task
+  input_sources:
+    string_to_print: task.python_greet
+- schema: print
+  input_sources:
+    # Note that local variable will appear first, regardless of its position in the list
+    string_to_print: [task.python_greet, local]
+  inputs:
+    string_to_print: Yet another string to print!
       

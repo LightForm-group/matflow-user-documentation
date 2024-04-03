@@ -16,7 +16,10 @@ matflow go hello.yaml
 - Output variables from a function should be wrapped in a dictionary,
   containing keys from the task schema output parameters.
 - A task can find output variables from previous tasks, and use them
-  as inputs. There is generally no need specify them explicitly.
+  as inputs. There is generally no need specify them explicitly,
+  but this can be done by using the `input_sources` key within a task 
+  to tell MatFlow where to obtain input values for a given input parameter, 
+  in combination with the dot notation e.g. `task.python_greet`.
 
 
 ## about YAML
