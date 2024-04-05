@@ -24,8 +24,8 @@ matflow go hello.yaml
 
 ## about YAML
 - https://www.yaml.info/learn/bestpractices.html
-- YAML can use indented, or zero-indented lists (sequences), where the hypen is
-  at the same level of indentation as the previous line.  
-  The creators recommend this zero-indented approach, but you can use either, and interchangably. 
-  It can help to view the indentation by considering the text rather than
-  the hypen.
+  - YAML can use indented, or zero-indented lists (sequences), where the hyphen is
+    at the same level of indentation as the previous line.
+    The creators recommend this zero-indented approach, but you can use either, and interchangeably.
+    It can help to view the indentation by considering the text rather than
+    the hyphen.
