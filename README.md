@@ -31,7 +31,7 @@ matflow go hello.yaml
   to tell MatFlow where to obtain input values for a given input parameter, 
   in combination with the dot notation e.g. `task.python_greet`.
 
-- The env.yaml file in use is defined in the config.yaml file under `environment_sources`
+- The `env.yaml` file in use is defined in `~/.matflow-new/config.yaml` under `environment_sources`
 
 - New Matflow environments can have module load/activate venv steps under `setup` key
 
