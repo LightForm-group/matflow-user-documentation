@@ -36,8 +36,11 @@ matflow go hello.yaml
 - New Matflow environments can have module load/activate venv steps under `setup` key
 
 - It is best to stick with using `python_script` as the label for any python executables,
-  for consistency with existing matflow tasks which you might want to call in your workflow
-  which will expect this label
+  for consistency with existing matflow tasks which you might want to call in your workflow which will expect this label
+
+- (python) functions used in task schemas which return values directly
+  should return a dictionary with keys corresponding to the output parameters
+
 
 ## about YAML
 
