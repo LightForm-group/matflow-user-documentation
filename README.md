@@ -41,6 +41,12 @@ matflow go hello.yaml
 - (python) functions used in task schemas which return values directly
   should return a dictionary with keys corresponding to the output parameters
 
+- `save_files` tells matflow to copy files from the execute directory to the artifacts directory
+  (matflow considers the execute directory temporary)
+
+- It's possible to add a task to a completed workflow (not zipped) using `wk.add_task(...)`,
+  but not using the CLI
+
 
 ## about YAML
 
