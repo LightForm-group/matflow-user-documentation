@@ -1,6 +1,6 @@
 # Task schema
 task_schemas:
-- objective: greet  
+- objective: greet
   inputs:
   - parameter: name
     default_value: World
@@ -35,6 +35,18 @@ task_schemas:
   - commands:
     - command: echo "<<parameter:string_to_print>>" > printed_string.txt
 
+# This schema uses the environment `temp_python_env`
+# which loads a python venv.
+# This is shown in `envs.yaml` in this repo.
+- objective: which_python
+  actions:
+  - commands:
+    - command: which python
+    environments:
+    - scope:
+        type: any
+      environment: temp_python_env
+
 # Workflow
 tasks:
 - schema: greet
@@ -60,4 +72,4 @@ tasks:
     string_to_print: [task.python_greet, local]
   inputs:
     string_to_print: Yet another string to print!
-      
+- schema: which_python

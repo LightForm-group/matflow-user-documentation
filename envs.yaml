@@ -1,0 +1,9 @@
+- name: temp_python_env
+  setup: source /home/mbexegc2/projects/lightform/matflow-learning/.venv/bin/activate
+  executables:
+  - label: python_script
+    instances:
+    - command: python <<script_name>> <<args>>
+      num_cores: 1
+      parallel_mode: null
+
