@@ -13,12 +13,12 @@ matflow go hello.yaml
 
 - In order to pass the input/output variables around, you need to wrap 
   parameters and scripts etc with some matflow syntax like this:
-
+  
   ```
   <<parameter:parameter_name>>
   <<script:path/to/script>>
   ```
-
+  
   The `<<script...` syntax adds some extra processing so you can call the (first)
   function in your python file with arguments, and pass any returned values back to matflow.
 
@@ -31,7 +31,7 @@ matflow go hello.yaml
   to tell MatFlow where to obtain input values for a given input parameter, 
   in combination with the dot notation e.g. `task.python_greet`.
 
-- The `env.yaml` file in use is defined in `~/.matflow-new/config.yaml` under `environment_sources`
+- The `envs.yaml` file in use is defined in `~/.matflow-new/config.yaml` under `environment_sources`
 
 - New Matflow environments can have module load/activate venv steps under `setup` key
 
@@ -46,7 +46,6 @@ matflow go hello.yaml
 
 - It's possible to add a task to a completed workflow (not zipped) using `wk.add_task(...)`,
   but not using the CLI
-
 
 ## about YAML
 
