@@ -8,7 +8,7 @@ matflow go hello.yaml
 
 ## about Matflow
 
-- Task schemas and workflows (a list of tasks) can go in the same yaml file 
+- Task schemas, workflows (a list of tasks), and environments can go in the same yaml file 
   (at least for development)
 
 - In order to pass the input/output variables around, you need to wrap 
@@ -46,6 +46,19 @@ matflow go hello.yaml
 
 - It's possible to add a task to a completed workflow (not zipped) using `wk.add_task(...)`,
   but not using the CLI
+
+- Errors like `ERROR matflow.persistence: batch update exception!`, 
+  without any obvious cause are sometimes caused by updating matflow and leftover submissions
+  info which can be cleared with `matflow manage clear-known-subs`. 
+
+- `input_file_generators` is a convenience shortcut for a python script which generates an input file
+  for a subsequent task. Not sure of all the  details but it's more compact, easier to reference, 
+  and has more interaction options.
+  The first parameter in the input generator (python) function definition must be "path", 
+  which is the file path to `input_file`, the file you want to create.
+  The `input_file` must point to the label of a file in `command_files`.
+  `from_inputs` defines which of the task schema inputs are required for each of the `input_file_generators`.
+  
 
 ## about YAML
 
