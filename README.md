@@ -16,7 +16,7 @@ matflow go hello.yaml
   
   ```
   <<parameter:parameter_name>>
-  <<script:path/to/script>>
+  <<script:/full/path/to/script>>
   ```
   
   The `<<script...` syntax adds some extra processing so you can call the (first)
@@ -58,6 +58,23 @@ matflow go hello.yaml
   which is the file path to `input_file`, the file you want to create.
   The `input_file` must point to the label of a file in `command_files`.
   `from_inputs` defines which of the task schema inputs are required for each of the `input_file_generators`.
+
+- `output_file_parsers` is  shortcut for a python script which processes output files 
+  from previous steps.
+  The function in the python script must have parameters for each of the files listed
+  in `from_files`, and this function should return data in a dictionary.
+  If you want to save results to a file, this can be done in the python function too,
+  but the function should return a dict. This can be hard-coded in the function,
+  or via an `inputs: [path_to_output_file]` line in the output file parser, 
+  and it will come after the output files in the function signature.
+  There is currently a bug such that files used in `output_file_parsers` are 
+  automatically saved, so if you have explictly saved them already using `save_files` in
+  the main action, it will crash. You need to remove them from that `save_files` list in 
+  the main action, but leave them as `command_files` because they're referenced by the 
+  output file parser.
+
+- Matflow stores output values using its own storage format based on Zarr - as such
+  not all possible options are supported (currently pandas dataframes are not).
   
 
 ## about YAML
