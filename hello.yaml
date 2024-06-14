@@ -73,3 +73,17 @@ tasks:
   inputs:
     string_to_print: Yet another string to print!
 - schema: which_python
+  - schema: greet
+    sequences:
+    - path: inputs.greeting
+      values:
+      - hey
+      - see ya later
+      - what's up
+      nesting_order: 0
+    - path: inputs.name
+      values:
+      - you guys
+      - aligator
+      - doc
+      nesting_order: 1

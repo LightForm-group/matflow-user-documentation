@@ -75,7 +75,19 @@ matflow go hello.yaml
 
 - Matflow stores output values using its own storage format based on Zarr - as such
   not all possible options are supported (currently pandas dataframes are not).
-  
+
+- Matflow can run tasks over a set of inputs values, if the iterations are independent.
+  For this, you use a `sequence`, and a `nesting_order` to control the nesting of the loops
+  but you can also "zip" two or more lists of inputs by using the same level of nesting.
+  ```
+ sequences:
+ - path: inputs.conductance_value
+   values:
+   - 0
+   - 100
+   - 200
+   nesting_order: 0
+  ```
 
 ## about YAML
 
