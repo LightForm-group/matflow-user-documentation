@@ -13,12 +13,12 @@ matflow go hello.yaml
 
 - In order to pass the input/output variables around, you need to wrap
   parameters and scripts etc with some matflow syntax like this:
-  
+
   ```
   <<parameter:parameter_name>>
   <<script:/full/path/to/script>>
   ```
-  
+
   The `<<script...` syntax adds some extra processing so you can call the (first)
   function in your python file with arguments, and pass any returned values back to matflow.
 
@@ -88,6 +88,23 @@ matflow go hello.yaml
    - 100
    - 200
    nesting_order: 0
+  ```
+
+- To combine outputs from multiple sequences, you can use a `group` in a task schema, combined with a
+
+  ```
+  groups:
+      - name: my_group
+  ```
+
+  in the task itself.
+  Then whichever parameters are linked with the group in the task schema will be received by
+  the task as a list
+
+  ```
+  inputs:
+      - parameter: p2
+        group: my_group
   ```
 
 ## about YAML
