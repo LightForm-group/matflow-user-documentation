@@ -72,6 +72,17 @@ matflow go hello.yaml
   the main action, it will crash. You need to remove them from that `save_files` list in
   the main action, but leave them as `command_files` because they're referenced by the
   output file parser.
+  The "name" of the `output_file_parsers` is the parameter returned i.e.
+  ```
+  output_file_parsers:
+    return_parameter: # This should be listed as an output parameter for the task schema
+      from_files:
+      - command_file1
+      - command_file2
+      script: <<script:your_processing_script.py>>
+      save_files:
+      - command_file_you_want_to_save
+  ```
 
 - Matflow stores output values using its own storage format based on Zarr - as such
   not all possible options are supported (currently pandas dataframes are not).
