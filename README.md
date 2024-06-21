@@ -118,6 +118,18 @@ matflow go hello.yaml
         group: my_group
   ```
 
+- Requesting resources can be done for the whole workflow like this at the top level
+  ```
+  resources:
+    any:
+      scheduler: sge
+      scheduler_args:
+        shebang_args: --login
+        options: ["-l mem512
+  ```
+  Still trying to find out how to request resources for specific tasks...
+
+
 ## about YAML
 
 - https://www.yaml.info/learn/bestpractices.html
