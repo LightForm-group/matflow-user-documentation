@@ -83,6 +83,10 @@ matflow go hello.yaml
       save_files:
       - command_file_you_want_to_save
   ```
+  The output_file_parser script that is run as the action should return one variable,
+  and as such, doesn't need to be wrapped in a dict. This is different behaviour to
+  a "main" action script.
+  i.e. `return the_data` rather than `return {"return_parameter": the_data}`
 
 - Matflow stores output values using its own storage format based on Zarr - as such
   not all possible options are supported (currently pandas dataframes are not).
