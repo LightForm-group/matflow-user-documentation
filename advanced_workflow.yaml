@@ -1,24 +1,24 @@
 template_components:
   task_schemas:
-  - objective: create_input_file
+  - objective: process_some_data
     inputs:
     - parameter: input_data
     actions:
-    - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/generate_input_file.py>>
-      script_data_in: direct
-      script_exe: python_script
-      save_files: 
-      - input_file
+    - input_file_generators:
+      - input_file: my_input_file
+        from_inputs:
+        - input_data
+        script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/generate_input_file.py>>
       environments:
       - scope:
           type: any
         environment: python_env
   command_files:
-  - label: input_file
+  - label: my_input_file
     name:
       name: input_file.json
 
 tasks:
-- schema: create_input_file
+- schema: process_some_data
   inputs:
     input_data: [1, 2, 3, 4]
