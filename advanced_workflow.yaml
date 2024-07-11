@@ -13,10 +13,23 @@ template_components:
       - scope:
           type: any
         environment: python_env
+    - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/process_input_file.py>>
+      script_exe: python_script
+      script_data_in: direct
+      environments:
+      - scope:
+          type: any
+        environment: python_env
+      save_files:
+      - processed_file
+
   command_files:
   - label: input_file
     name:
       name: input_file.json
+  - label: processed_file
+    name:
+      name: processed_file.json
 
 tasks:
 - schema: create_input_file
