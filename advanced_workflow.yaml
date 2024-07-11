@@ -21,4 +21,4 @@ template_components:
 tasks:
 - schema: create_input_file
   inputs:
-    input_data: ["this", "is", "my", "data"]
+    input_data: [1, 2, 3, 4]
