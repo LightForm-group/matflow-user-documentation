@@ -3,6 +3,8 @@ template_components:
   - objective: process_some_data
     inputs:
     - parameter: input_data
+    outputs:
+    - parameter: parsed_output
     actions:
     - input_file_generators:
       - input_file: my_input_file
@@ -17,6 +19,14 @@ template_components:
       script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/process_input_file.py>>
       save_files:
       - processed_file
+      output_file_parsers:
+        parsed_output:
+          from_files:
+          - my_input_file
+          - processed_file
+          script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/parse_output.py>>
+          save_files:
+            - parsed_output
 
 
   command_files:
@@ -26,6 +36,9 @@ template_components:
   - label: processed_file
     name:
       name: processed_file.json
+  - label: parsed_output
+    name:
+      name: parsed_output.json
 
 tasks:
 - schema: process_some_data
