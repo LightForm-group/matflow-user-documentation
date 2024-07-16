@@ -67,6 +67,8 @@ Then whichever parameters are linked with the group in the task schema will be r
 for a subsequent task. It's more compact, easier to reference, and has more interaction options.
 The first parameter in the input generator (python) function definition must be "path",
 which is the file path to `input_file`, the file you want to create.
+Given this is a Matflow input file, the path is just the file name which will be created in the
+execute directory.
 The `input_file` must point to the label of a file in `command_files`.
 `from_inputs` defines which of the task schema inputs are required for each of the `input_file_generators`.
 
