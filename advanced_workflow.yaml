@@ -15,7 +15,6 @@ template_components:
         environment: python_env
     - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/process_input_file.py>>
       script_exe: python_script
-      script_data_in: direct
       environments:
       - scope:
           type: any
