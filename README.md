@@ -12,5 +12,7 @@ There are also some examples which can be run like this
 
 ```
 matflow go hello.yaml
+matflow go groups.yaml
+matflow go advanced_workflow.yaml
 ```
 They have been tested with MatFlow, version 0.3.0a128.
