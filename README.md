@@ -1,4 +1,4 @@
-# Learning about matflow
+# Write your own workflow using Matflow
 This repo contains something of a guide to writing your own workflows in matflow.
 
 - [Setup](setup.md)
