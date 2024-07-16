@@ -1,5 +1,5 @@
 # Resources
-Requesting resources can be done for the whole workflow like this at the top level
+Requesting resources can be done using a `resources` block, either for the whole workflow at the top level,
 ```
 resources:
 any:
@@ -9,7 +9,19 @@ scheduler_args:
     options:
     -l: short
 ```
-
+or at the task level
+```
+- schema: simulate_VE_loading_damask
+  resources:
+    any:
+      # This will use two cores for input file generators and output file parsers
+      num_cores: 2
+    main:
+      # Use 16 cores for the "main" part of the task (the simulation in this case)
+      num_cores: 16
+  inputs:
+    ...
+```
 
 # Tasks
 ## Sequences
