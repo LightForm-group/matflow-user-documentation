@@ -4,7 +4,7 @@ template_components:
     inputs:
     - parameter: input_data
     actions:
-    - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/generate_input_file.py>>
+    - script: <<script:/home/mbexegc2/projects/lightform/matflow-user-documentation/generate_input_file.py>>
       script_data_in: direct
       script_exe: python_script
       save_files: 
@@ -13,7 +13,7 @@ template_components:
       - scope:
           type: any
         environment: python_env
-    - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/process_input_file.py>>
+    - script: <<script:/home/mbexegc2/projects/lightform/matflow-user-documentation/process_input_file.py>>
       script_exe: python_script
       environments:
       - scope:
