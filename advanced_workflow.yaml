@@ -1,6 +1,6 @@
 template_components:
   task_schemas:
-  - objective: create_input_file
+  - objective: process_data_without_input_file_generator
     inputs:
     - parameter: input_data
     actions:
@@ -31,6 +31,6 @@ template_components:
       name: processed_file.json
 
 tasks:
-- schema: create_input_file
+- schema: process_data_without_input_file_generator
   inputs:
     input_data: [1, 2, 3, 4]
