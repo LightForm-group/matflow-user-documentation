@@ -62,9 +62,11 @@ combined with a `groups` entry in the task itself.
 Then whichever parameters are linked with the group in the task schema will be received by the task as a list.
 
 # Task schemas
+
 ## Input file generators
+
 `input_file_generators` is a convenience shortcut for a python script which generates an input file
-for a subsequent task. It's more compact, easier to reference, and has more interaction options.
+for a subsequent action within a task. It's more compact, easier to reference, and has more interaction options.
 The first parameter in the input generator (python) function definition must be "path",
 which is the file path to `input_file`, the file you want to create.
 Given this is a Matflow input file, the path is just the file name which will be created in the
@@ -84,7 +86,12 @@ task_schemas:
     script: <<script:/full/path/to/generate_input_file.py>>
 ```
 
+An example is given in [advanced_workflow.yaml](advanced_workflow.yaml), along with the alternative code which would be needed
+
+to achieve the same result without an input file generator.
+
 ## Output file parsers
+
 `output_file_parsers` is a shortcut for a python script which processes output files
 from previous steps.
 The function in the python script must have parameters for each of the files listed
