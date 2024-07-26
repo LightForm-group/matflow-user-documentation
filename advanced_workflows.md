@@ -2,12 +2,12 @@
 Requesting resources can be done using a `resources` block, either for the whole workflow at the top level,
 ```
 resources:
-any:
-scheduler: sge
-scheduler_args:
-    shebang_args: --login
-    options:
-    -l: short
+  any:
+    scheduler: sge
+    scheduler_args:
+      shebang_args: --login
+      options:
+        -l: short
 ```
 or at the task level
 ```
