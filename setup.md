@@ -17,6 +17,10 @@ Matflow has the concept of environments, similar to python virtual environments.
 These allow tasks to run using the specific software they require.
 Your environment file can be be opened using `matflow open env-source`.
 
+It is possible to have more than one environment file,
+however be careful not to duplicate environments as this will lead to an error:
+https://docs.matflow.io/stable/user/how_to/environments.html
+
 Alternatively, the environment file is specified in the config file,
 which can be found using `matflow manage get-config-path`, or opened directly using
 `matflow open config`. 
