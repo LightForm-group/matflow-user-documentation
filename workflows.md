@@ -92,6 +92,16 @@ the task schemas needs to set the input and output type accordingly:
 ```
 
 It might however be more appropriate to save results to files instead.
+The above syntax marks all script input and output data as `direct`,
+but for finer control, each parameter (or a wildcard) can set the type
+e.g.
+
+```
+script_data_in: 
+  param1: direct
+  param2: direct
+  "*": json
+```
 
 ## Writing a workflow
 A workflow is just a list of tasks, which are run like this
