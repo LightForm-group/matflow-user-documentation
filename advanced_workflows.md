@@ -23,6 +23,36 @@ or at the task level
     ...
 ```
 
+We can see from above that it is possible to request resources for subsets of the actions
+in a task schema. A full list of the different options you can select resources for is given below.
+- `input_file_generator`
+- `output_file_parser`
+- `processing` (a shortcut for `input_file_generator` +  `output_file_parser`)
+- `main` (the main part of the action i.e. not `processing`)
+- `any` (anything not already specified with any of the above options)
+
+
+These are used to choose resources (done at the workflow/task level),
+and also the same values can be used within the schema to select an `environment`
+by `scope` e.g.
+
+```
+actions:
+- environments:
+  - scope:
+      type: processing
+    environment: damask_parse_env
+  - scope:
+      type: main
+    environment: damask_env
+```
+
+MatFlow is then looking for a match within your environment definitions for the requested
+resources, and will run the command which matches those resources.
+
+The [official docs](https://docs.matflow.io/stable/reference/_autosummary/matflow.ResourceSpec.html)
+list the available resource options that can be requested.
+
 # Tasks
 ## Sequences
 Matflow can run tasks over a set of inputs values, if the iterations are independent.
