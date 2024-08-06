@@ -1,15 +1,20 @@
 # Resources
+
 Requesting resources can be done using a `resources` block, either for the whole workflow at the top level,
+
 ```
 resources:
   any:
-    scheduler: sge
+    scheduler: sge # Setting the scheduler is not normally needed because a
+                   # `default_scheduler` will be set in the config file.
     scheduler_args:
       shebang_args: --login
       options:
         -l: short
 ```
+
 or at the task level
+
 ```
 - schema: simulate_VE_loading_damask
   resources:
@@ -25,12 +30,12 @@ or at the task level
 
 We can see from above that it is possible to request resources for subsets of the actions
 in a task schema. A full list of the different options you can select resources for is given below.
+
 - `input_file_generator`
 - `output_file_parser`
 - `processing` (a shortcut for `input_file_generator` +  `output_file_parser`)
 - `main` (the main part of the action i.e. not `processing`)
 - `any` (anything not already specified with any of the above options)
-
 
 These are used to choose resources (done at the workflow/task level),
 and also the same values can be used within the schema to select an `environment`
@@ -54,7 +59,9 @@ The [official docs](https://docs.matflow.io/stable/reference/_autosummary/matflo
 list the available resource options that can be requested.
 
 # Tasks
+
 ## Sequences
+
 Matflow can run tasks over a set of inputs values, if the iterations are independent.
 For this, you use a `sequence`, and a `nesting_order` to control the nesting of the loops
 but you can also "zip" two or more lists of inputs by using the same level of nesting.
@@ -73,7 +80,9 @@ tasks:
 ```
 
 ## Groups
+
 To combine outputs from multiple sequences, you can use a `group` in a task schema:
+
 ```
 - objective: my_task_schema
   inputs:
@@ -136,6 +145,7 @@ the main action, it will crash. You need to remove them from that `save_files` l
 the main action, but leave them as `command_files` because they're referenced by the
 output file parser.
 The "name" of the `output_file_parsers` is the parameter returned i.e.
+
 ```
 output_file_parsers:
   return_parameter: # This should be listed as an output parameter for the task schema
@@ -146,6 +156,7 @@ output_file_parsers:
     save_files:
     - command_file_you_want_to_save
 ```
+
 The output_file_parser script that is run as the action should return one variable,
 rather than a dictionary. This is different behaviour to
 a "main" action script.
