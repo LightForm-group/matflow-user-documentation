@@ -9,7 +9,13 @@ Be able to:
 To install matflow, choose one of the options from the [official instructions][installation_instructions].
 Matflow is installed on a shared area on CSF3, but (currently) for full functionality
 i.e. being able to pass matflow parameters directly between tasks, 
-you need (the same version of) matflow installed in the task environment.
+**you need (the same version of) matflow installed in the task environment**.
+
+I've found the easiest approach is to set up a python virtual environment for each project,
+which contains MatFlow and any other packages needed,
+and to use MatFlow from that python environment to submit the workflow.
+I also activate that same python virtual environment in any MatFlow task environments
+needed for the workflow (e.g. python_env, damask_parse_env, formable_env etc).
 
 ## Matflow environments
 
