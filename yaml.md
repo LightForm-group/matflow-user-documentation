@@ -30,3 +30,6 @@ setup: |
     source /mnt/iusers01/support/mbexegc2/scratch/Abaqus_bayesian_matflow/.venv/bin/activate
     module load apps/binapps/abaqus/2022
 ```
+
+## Null = None
+In YAML, you use `Null` if you want to set a (python) value of `None`.
