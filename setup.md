@@ -12,7 +12,7 @@ i.e. being able to pass matflow parameters directly between tasks,
 **you need (the same version of) matflow installed in the task environment**.
 
 I've found the easiest approach is to set up a python virtual environment for each project,
-which contains MatFlow and any other packages needed,
+[install MatFlow using pip][install_matflow_with_pip] and any other packages needed,
 and to use MatFlow from that python environment to submit the workflow.
 I also activate that same python virtual environment in any MatFlow task environments
 needed for the workflow (e.g. python_env, damask_parse_env, formable_env etc).
@@ -35,3 +35,4 @@ Your environment file should be listed under `environment_sources`.
 An example environment file is given at [`envs.yaml`](envs.yaml).
 
 [installation_instructions]: https://docs.matflow.io/stable/installation.html
+[install_matflow_with_pip]: https://docs.matflow.io/stable/installation.html#matflow-python-package
