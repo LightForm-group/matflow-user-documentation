@@ -135,6 +135,8 @@ to achieve the same result without an input file generator.
 from previous steps.
 The function in the python script must have parameters for each of the files listed
 in `from_files`, and this function should return data in a dictionary.
+The output file parser script can also have parameters for any of the task schema inputs,
+and these are listed under an `inputs` key.
 If you want to save results to a file, this can be done in the python function too,
 but the function should return a dict. This can be hard-coded in the function,
 or via an `inputs: [path_to_output_file]` line in the output file parser,
@@ -155,6 +157,9 @@ output_file_parsers:
     script: <<script:your_processing_script.py>>
     save_files:
     - command_file_you_want_to_save
+    inputs:
+    - input1
+    - input2
 ```
 
 The output_file_parser script that is run as the action should return one variable,
