@@ -160,4 +160,6 @@ output_file_parsers:
 The output_file_parser script that is run as the action should return one variable,
 rather than a dictionary. This is different behaviour to
 a "main" action script.
-i.e. `return the_data` rather than `return {"return_parameter": the_data}`
+i.e. `return the_data` rather than `return {"return_parameter": the_data}`.
+This is because an output file parser only has one named output parameter,
+so a dictionary isn't needed to distinguish different output parameters.
