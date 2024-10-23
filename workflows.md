@@ -125,10 +125,15 @@ task_schemas:
 - objective: my_task_schema
   inputs:
   - parameter: my_input
-  save_files:
-      - my_command_file
+  outputs:
+  - parameter: my_output
+  actions:
+  - environments: ...
+    commands: ...
+    save_files:
+    - my_command_file
 ```
-
+There are a couple of examples of this in the [example advanced workflow](advanced_workflow.yaml)
 
 ## Running your workflow
 ```
