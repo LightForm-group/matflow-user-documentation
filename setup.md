@@ -1,21 +1,117 @@
 # Setup
+
 ## Learning objectives
+
 Be able to:
+
 - Install matflow
 - Configure environments file
 
 ## Installation
 
-To install matflow, choose one of the options from the [official instructions][installation_instructions].
-Matflow is installed on a shared area on CSF3, but (currently) for full functionality
-i.e. being able to pass matflow parameters directly between tasks, 
-**you need (the same version of) matflow installed in the task environment**.
+It is recommended to use separate python virtual environments for each project you're working on,
 
-I've found the easiest approach is to set up a python virtual environment for each project,
-[install MatFlow using pip][install_matflow_with_pip] and any other packages needed,
-and to use MatFlow from that python environment to submit the workflow.
-I also activate that same python virtual environment in any MatFlow task environments
-needed for the workflow (e.g. python_env, damask_parse_env, formable_env etc).
+and to install MatFlow into a venv for each new project you work on.
+
+### CSF3
+
+- Load a recent version of python e.g.
+  
+  ```
+  module load apps/binapps/anaconda3/2023.09
+  ```
+
+- Create a virtual environment where you'll install the packages needed for your project.
+  This makes for a reproducible set up, and avoids potential conflicts with other packages.
+  
+  ```
+  python -m venv .venv
+  ```
+
+- Activate your virtual environment (you need to do this each time you log back in to the CSF
+  and want to use this venv)
+  
+  ```
+  source .venv/bin/activate
+  ```
+
+- Install MatFlow as a python package (and any other python packages needed)
+  
+  ```
+  pip install matflow-new
+  ```
+
+## Configuring MatFlow
+
+This generally only needs doing once per machine
+
+### CSF3
+
+- Pull the CSF3 config file from a github repo
+  
+  ```
+  matflow config import github://hpcflow:matflow-configs@main/manchester-CSF3.yaml
+  ```
+  
+  This creates a file `~/.matflow-new/config.yaml` which tells MatFlow to use a shared environments file
+  `/mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml`.
+
+- We need to make a copy of this ...
+  
+  ```
+  cp /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml ~/.matflow-new/
+  ```
+
+- ... and then edit the copy. We're removing the `setup` section for the first three environments
+  (see the diff below)
+   We'll use the shared conda environments that it defines, but use our recently created python venv
+   for any the python-based MatFlow environments.
+  
+  ```diff
+  @@ -1,7 +1,4 @@
+   - name: damask_parse_env
+  -  setup: |
+  -   module purge
+  -   source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/activate
+    executables:
+      - label: python_script
+      instances:
+  @@ -12,9 +9,6 @@
+          parallel_mode: null
+  
+    - name: formable_env
+  - setup: |
+  -   module purge
+  -   source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/activate
+    executables:
+       - label: python_script
+         instances:
+  @@ -25,9 +19,6 @@
+             parallel_mode: null
+    - name: defdap_env
+  -   setup: |
+  -     module purge
+  -     source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/defdap_env-linux/bin/activate
+      executables:
+        - label: python_script
+            instances:
+  ```
+
+- Edit the config file `~/.config.yaml` to point to your modified copy of the environments file 
+  
+  ```diff
+  @@ -36,7 +36,7 @@
+         telemetry: true
+         log_file_path: logs/<<app_name>>_v<<app_version>>.log
+         environment_sources:
+  -      - /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml
+  +      - /full/path/to/HOME/.matflow-new/envs_CSF3.yaml
+         task_schema_sources: []
+         command_file_sources: []
+         parameter_sources: []
+  ```
+
+
 
 ## Matflow environments
 
@@ -29,7 +125,7 @@ https://docs.matflow.io/stable/user/how_to/environments.html
 
 Alternatively, the environment file is specified in the config file,
 which can be found using `matflow manage get-config-path`, or opened directly using
-`matflow open config`. 
+`matflow open config`.
 Your environment file should be listed under `environment_sources`.
 
 An example environment file is given at [`envs.yaml`](envs.yaml).
