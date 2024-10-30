@@ -33,3 +33,8 @@ setup: |
 
 ## Null = None
 In YAML, you use `Null` if you want to set a (python) value of `None`.
+
+## Checking your YAML file
+If you're struggling to understand a new error from MatFlow, 
+it's worth checking you're using valid syntax in your yaml file(s) 
+using something like https://www.yamllint.com/.
