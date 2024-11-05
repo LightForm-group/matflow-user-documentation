@@ -41,7 +41,7 @@ These are used to choose resources (done at the workflow/task level),
 and also the same values can be used within the schema to select an `environment`
 by `scope` e.g.
 
-```
+```yaml
 actions:
 - environments:
   - scope:
@@ -57,6 +57,18 @@ resources, and will run the command which matches those resources.
 
 The [official docs](https://docs.matflow.io/stable/reference/_autosummary/matflow.ResourceSpec.html)
 list the available resource options that can be requested.
+
+Scheduler arguments can be passed like this e.g. to target high memory nodes:
+
+```yaml
+resources:
+  any:
+    num_cores: 10
+    SGE_parallel_env: amd.pe
+    scheduler_args:
+      options:
+        -l: mem512
+```
 
 # Tasks
 
