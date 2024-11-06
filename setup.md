@@ -4,7 +4,7 @@
 
 Be able to:
 
-- Install matflow
+- Install MatFlow
 - Configure environments file
 
 ## Installation
@@ -56,45 +56,34 @@ This generally only needs doing once per machine
   This creates a file `~/.matflow-new/config.yaml` which tells MatFlow to use a shared environments file
   `/mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml`.
 
-- We need to make a copy of this ...
+- Some of these shared environments don't include python or MatFlow itself,
+  but instead "stand alone" software such as MATLAB, DAMASK, etc.
+  These environments will work with any version of MatFlow.
   
-  ```
-  cp /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml ~/.matflow-new/
+  However, several of the shared environments use python packages and MatFlow,
+  and they need to be used in conjunction with a specific version of MatFlow.
+
+  We will make a copy of the shared environments file and redefine this type of environment to point
+  to the venv we created earlier, so that we can use the current version of MatFlow.
+
+  ```bash
+  cp /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml ~/matflow-new
   ```
 
-- ... and then edit the copy. We're removing the `setup` section for the first three environments
-  (see the diff below)
-   We'll use the shared conda environments that it defines, but use our recently created python venv
-   for any the python-based MatFlow environments.
+  Then we need to edit each of the environments (damask_parse, formable, defap) like this:
   
   ```diff
-  @@ -1,7 +1,4 @@
+  @@ -1,20 +1,15 @@
    - name: damask_parse_env
   -  setup: |
-  -   module purge
-  -   source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/activate
-    executables:
-      - label: python_script
-      instances:
-  @@ -12,9 +9,6 @@
-          parallel_mode: null
-  
-    - name: formable_env
-  - setup: |
-  -   module purge
-  -   source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/activate
-    executables:
+  -    module purge
+  -    source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/activate
+  +  setup: source /full/path/to/your/project/.venv/bin/activate
+     executables:
        - label: python_script
          instances:
-  @@ -25,9 +19,6 @@
-             parallel_mode: null
-    - name: defdap_env
-  -   setup: |
-  -     module purge
-  -     source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/defdap_env-linux/bin/activate
-      executables:
-        - label: python_script
-            instances:
+  -        - command: /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/python <<script_name>> <<args>>
+  +        - command: python <<script_name>> <<args>>
   ```
 
 - Edit the config file `~/.config.yaml` to point to your modified copy of the environments file 
