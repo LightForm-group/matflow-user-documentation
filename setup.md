@@ -69,7 +69,7 @@ This generally only needs doing once per machine
   to the venv we created earlier, so that we can use the current version of MatFlow.
 
   ```bash
-  cp /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml ~/matflow-new
+  cp /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml ~/.matflow-new
   ```
 
   Then we need to edit each of the environments (damask_parse, formable, defap) like this:
