@@ -107,6 +107,14 @@ Once you've set up MatFlow on CSF3 following the steps above,
 you might prefer to reuse the python venv for subsequent projects,
 to avoid reconfiguring for each venv you create.
 
+## Running MatFlow
+You will need to activate your venv each time you log in to the CSF3 and want to run MatFlow.
+This is done using from directory which contains your `.venv` directory.
+
+  ```
+  source .venv/bin/activate
+  ```
+
 ## Matflow environments
 
 Matflow has the concept of environments, similar to python virtual environments.
