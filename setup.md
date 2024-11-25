@@ -72,7 +72,8 @@ This generally only needs doing once per machine
   cp /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml ~/.matflow-new
   ```
 
-  Then we need to edit each of the environments (damask_parse, formable, defap) like this:
+  Then we need to edit each of the environments (damask_parse, formable, defap) like this
+  (remove the red `-` lines, and add the green `+` lines):
   
   ```diff
   @@ -1,20 +1,15 @@
