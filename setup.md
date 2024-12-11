@@ -13,8 +13,6 @@ It is generally recommended to use separate python virtual environments for each
 
 and to install MatFlow into a venv for each new project you work on.
 
-
-
 ### CSF3
 
 - Load a recent version of python e.g.
@@ -76,21 +74,55 @@ This generally only needs doing once per machine
   (remove the red `-` lines, and add the green `+` lines):
   
   ```diff
-  @@ -1,20 +1,15 @@
+  @@ -1,37 +1,31 @@
    - name: damask_parse_env
   -  setup: |
   -    module purge
   -    source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/activate
   +  setup: source /full/path/to/your/project/.venv/bin/activate
-     executables:
-       - label: python_script
-         instances:
-  -        - command: /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/python <<script_name>> <<args>>
-  +        - command: python <<script_name>> <<args>>
+    executables:
+      - label: python_script
+        instances:
+  -       - command: /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/python <<script_name>> <<args>>
+  +       - command: python <<script_name>> <<args>>
+            num_cores:
+              start: 1
+              stop: 32
+            parallel_mode: null
+
+   - name: formable_env
+  -  setup: |
+  -    module purge
+  -    source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/activate
+  +  setup: source /full/path/to/your/project/.venv/bin/activate
+    executables:
+      - label: python_script
+        instances:
+  -       - command: /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/matflow_full_env-linux/bin/python <<script_name>> <<args>>
+  +       - command: python <<script_name>> <<args>>
+            num_cores:
+              start: 1
+              stop: 32
+            parallel_mode: null
+
+   - name: defdap_env
+  -  setup: |
+  -    module purge
+  -    source /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/defdap_env-linux/bin/activate
+  +  setup: source /full/path/to/your/project/.venv/bin/activate
+    executables:
+      - label: python_script
+        instances:
+  -       - command: /mnt/eps01-rds/jf01-home01/shared/software/matflow_conda_envs/defdap_env-linux/bin/python <<script_name>> <<args>>
+  +       - command: python <<script_name>> <<args>>
+            num_cores:
+              start: 1
+              stop: 32
   ```
 
+
 - Edit the config file `~/.config.yaml` to point to your modified copy of the environments file 
-  
+
   ```diff
   @@ -36,7 +36,7 @@
          telemetry: true
