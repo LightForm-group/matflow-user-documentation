@@ -64,7 +64,7 @@ Scheduler arguments can be passed like this e.g. to target high memory nodes:
 resources:
   any:
     num_cores: 10
-    SGE_parallel_env: amd.pe
+    SGE_parallel_env: smp.pe
     scheduler_args:
       options:
         -l: mem512
