@@ -50,7 +50,7 @@ The workflow itself goes under a different top-level `tasks:` key
 
 ## Matflow syntax
 If you want to reference parameters in the action of your task schema,
-it should be done using this sytax:
+it should be done using this syntax:
 `<<parameter:your_parameter_name>>`.
 
 Similarly, commands defined in an environment can be used like this:
@@ -61,6 +61,8 @@ actions:
 - commands:
   - command: <<executable:abaqus>> job=sub_script_check input=<<file:new_inp_file>> interactive
 ```
+
+Note that while command files can be referenced in an action, they cannot be referenced in this was as an input to a task schema.
 
 Python scripts however are executed slightly differently, and run the first 
 function defined in your python file.
