@@ -17,27 +17,27 @@ and to install MatFlow into a venv for each new project you work on.
 
 - Load a recent version of python e.g.
   
-  ```
+  ```bash
   module load apps/binapps/anaconda3/2023.09
   ```
 
 - Create a virtual environment where you'll install the packages needed for your project.
   This makes for a reproducible set up, and avoids potential conflicts with other packages.
   
-  ```
+  ```bash
   python -m venv .venv
   ```
 
 - Activate your virtual environment (you need to do this each time you log back in to the CSF
   and want to use this venv)
   
-  ```
+  ```bash
   source .venv/bin/activate
   ```
 
 - Install MatFlow as a python package (and any other python packages needed)
   
-  ```
+  ```bash
   pip install matflow-new
   ```
 
@@ -49,7 +49,7 @@ This generally only needs doing once per machine
 
 - Pull the CSF3 config file from a github repo
   
-  ```
+  ```bash
   matflow config import github://hpcflow:matflow-configs@main/manchester-CSF3.yaml
   ```
   
@@ -120,19 +120,18 @@ This generally only needs doing once per machine
               stop: 32
   ```
 
-
 - Edit the config file `~/.config.yaml` to point to your modified copy of the environments file 
 
   ```diff
   @@ -36,7 +36,7 @@
-         telemetry: true
-         log_file_path: logs/<<app_name>>_v<<app_version>>.log
-         environment_sources:
-  -      - /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml
-  +      - /full/path/to/HOME/.matflow-new/envs_CSF3.yaml
-         task_schema_sources: []
-         command_file_sources: []
-         parameter_sources: []
+        telemetry: true
+        log_file_path: logs/<<app_name>>_v<<app_version>>.log
+        environment_sources:
+  -       - /mnt/eps01-rds/jf01-home01/shared/software/matflow_envs/envs_CSF3.yaml
+  +       - /full/path/to/HOME/.matflow-new/envs_CSF3.yaml
+        task_schema_sources: []
+        command_file_sources: []
+        parameter_sources: []
   ```
 
 Once you've set up MatFlow on CSF3 following the steps above,
@@ -140,12 +139,13 @@ you might prefer to reuse the python venv for subsequent projects,
 to avoid reconfiguring for each venv you create.
 
 ## Running MatFlow
+
 You will need to activate your venv each time you log in to the CSF3 and want to run MatFlow.
 This is done using from directory which contains your `.venv` directory.
 
-  ```
-  source .venv/bin/activate
-  ```
+```bash
+source .venv/bin/activate
+```
 
 ## Matflow environments
 
