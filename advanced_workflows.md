@@ -70,6 +70,21 @@ resources:
         -l: mem512
 ```
 
+If you have set resource options at the top level (for the whole workflow), but would like to "unset" them for a particular task,
+
+you can pass an empty dictionary:
+
+```yaml
+- schema: simulate_VE_loading_damask
+  resources:
+    main:
+      num_cores: 16
+      scheduler_args:
+        options: {} # "Clear" any previous options which have been set.
+  inputs:
+```
+
+
 # Tasks
 
 ## Sequences
