@@ -74,7 +74,7 @@
 
     - label: run_mtex
       instances:
-      - command: matlab -batch "<<script_name_no_ext>> <<args>>"
+      - command: matlab -singleCompThread -batch "<<script_name_no_ext>> <<args>>"
         num_cores: 1
         parallel_mode: null
       - command: matlab -batch "<<script_name_no_ext>> <<args>>"
