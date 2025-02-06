@@ -143,6 +143,26 @@ There are a couple of examples of this in the [example advanced workflow](advanc
 matflow go my_workflow.yaml
 ```
 
+## Checking on a workflow
+When a workflow is running, or indeed after it has finished, you can check whether it was successful using
+
+```
+matflow show
+```
+
+or if you want task-level detail
+```
+matflow show -f
+```
+
+This will show the last few workflows. However if you're checking on an older workflow you might need to 
+tell MatFlow to show more results. This is done using e.g.
+
+```
+matflow show -f -r N
+```
+to show the last `N` results.
+
 ## Cancelling a workflow
 Sometimes you might want to cancel a workflow that is running.
 Use
