@@ -11,7 +11,7 @@ the task schemas, and the command files.
 These are like a template for a task you want to run,
 with definitions of the input and outputs that are expected.
 
-Matflow has many build-in task schemas, but you may want to 
+Matflow has many build-in task schemas, but you may want to
 write your own.
 
 ## Command files
@@ -64,7 +64,7 @@ actions:
 
 Note that while command files can be referenced in an action, they cannot be referenced in this was as an input to a task schema.
 
-Python scripts however are executed slightly differently, and run the first 
+Python scripts however are executed slightly differently, and run the first
 function defined in your python file.
 The `<<script:...` syntax adds some extra processing so you can call the (first)
 function in your python file with arguments, and pass any returned values back to matflow.
@@ -97,6 +97,7 @@ It might however be more appropriate to save results to files instead.
 
 ## Writing a workflow
 A workflow is just a list of tasks, which are run like this
+
 ```
 tasks:
 - schema: my_task_schema
@@ -141,3 +142,12 @@ There are a couple of examples of this in the [example advanced workflow](advanc
 ```
 matflow go my_workflow.yaml
 ```
+
+## Cancelling a workflow
+Sometimes you might want to cancel a workflow that is running.
+Use
+```
+matflow cancel WORKFLOW_REF
+```
+where `WORKFLOW_REF` is either the path to the workflow directory, or the number of the workflow
+displayed by `matflow show`.
