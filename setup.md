@@ -162,7 +162,8 @@ which can be found using `matflow manage get-config-path`, or opened directly us
 `matflow open config`.
 Your environment file should be listed under `environment_sources`.
 
-An example environment file is given at [`envs.yaml`](envs.yaml).
+An example environment file is given at [`envs.yaml`](envs.yaml),
+and a complete environments file template is given at [`envs_template.yaml`](envs_template.yaml).
 
 [installation_instructions]: https://docs.matflow.io/stable/installation.html
 [install_matflow_with_pip]: https://docs.matflow.io/stable/installation.html#matflow-python-package
