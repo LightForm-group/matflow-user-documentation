@@ -9,9 +9,7 @@ Be able to:
 
 ## Installation
 
-It is generally recommended to use separate python virtual environments for each project you're working on,
-
-and to install MatFlow into a venv for each new project you work on.
+It is generally recommended to use separate python virtual environments for each project you're working on, and to install MatFlow into a new virtual environment for each new project you work on.
 
 ### CSF3
 
@@ -28,8 +26,8 @@ and to install MatFlow into a venv for each new project you work on.
   python -m venv .venv
   ```
 
-- Activate your virtual environment (you need to do this each time you log back in to the CSF
-  and want to use this venv)
+- Activate your virtual environment (you need to do this each time you log back in to the CSF and want to use this venv).
+  The environment name is in brackets in your prompt when it is active.
   
   ```bash
   source .venv/bin/activate
@@ -40,6 +38,15 @@ and to install MatFlow into a venv for each new project you work on.
   ```bash
   pip install matflow-new
   ```
+
+- Check it installed by running
+
+  ```bash
+  matflow --version
+  ```
+  
+  which should give tell you the version number that is installed (something like `MatFlow, version 0.3.0a138`).
+  If this command gives you an error check if the output from the `pip install` command had any errors, and check if your environment created in step 2 is active.
 
 ## Configuring MatFlow
 
