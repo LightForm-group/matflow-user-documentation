@@ -45,7 +45,7 @@ It is generally recommended to use separate python virtual environments for each
   matflow --version
   ```
   
-  which should give tell you the version number that is installed (something like `MatFlow, version 0.3.0a138`).
+  which should give you the version number that is installed (e.g. `MatFlow, version 0.3.0a138`).
   If this command gives you an error check if the output from the `pip install` command had any errors, and check if your environment created in step 2 is active.
 
 ## Configuring MatFlow
