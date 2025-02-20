@@ -62,7 +62,7 @@ actions:
   - command: <<executable:abaqus>> job=sub_script_check input=<<file:new_inp_file>> interactive
 ```
 
-Note that while command files can be referenced in an action, they cannot be referenced in this was as an input to a task schema.
+Note that while command files can be referenced in an action, they cannot be referenced in this way as an input to a task schema.
 
 Python scripts however are executed slightly differently, and run the first
 function defined in your python file.
