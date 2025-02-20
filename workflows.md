@@ -95,6 +95,24 @@ the task schemas needs to set the input and output type accordingly:
 
 It might however be more appropriate to save results to files instead.
 
+In addition to passing variables directly,
+tasks can read parameters from (and save to) various file formats including json and HDF5.
+
+An example of passing variables via json files is given in [pass_as_json.yaml](pass_as_json.yaml).
+MatFlow writes the input parameters into a json file `js_0_act_0_inputs.json`,
+and the output into a file `js_0_act_0_outputs.json`.
+These file names are generated automatically,
+and MatFlow keeps track of where the various parameters are stored.
+So if any parameters saved in json files (or passed directly) are needed as input for another function,
+MatFlow can pass them directly or via json as specified in the task schema.
+An example is given of both combinations.
+
+The particular variables names used to pass parameters using json/HDF5 depend on
+which language is being used.
+For example using MATLAB uses this syntax `inputs_JSON_path`, `outputs_HDF5_path`
+instead of the python equivalents `_input_files` and `_output_files`
+See the MTEX examples for more details.
+
 ## Writing a workflow
 A workflow is just a list of tasks, which are run like this
 
@@ -155,7 +173,7 @@ or if you want task-level detail
 matflow show -f
 ```
 
-This will show the last few workflows. However if you're checking on an older workflow you might need to 
+This will show the last few workflows. However if you're checking on an older workflow you might need to
 tell MatFlow to show more results. This is done using e.g.
 
 ```
