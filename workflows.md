@@ -62,16 +62,22 @@ actions:
   - command: <<executable:abaqus>> job=sub_script_check input=<<file:new_inp_file>> interactive
 ```
 
-Note that while command files can be referenced in an action, they cannot be referenced in this was as an input to a task schema.
+Note that while command files can be referenced in an action, they cannot be referenced in this way as an input to a task schema.
 
 Python scripts however are executed slightly differently, and run the first
-function defined in your python file.
+function defined in your python file, which must have the same name as the python file.
 The `<<script:...` syntax adds some extra processing so you can call the (first)
-function in your python file with arguments, and pass any returned values back to matflow.
+function in your python file with arguments, and pass any returned values back to matflow e.g:
 ```
 actions:
 - script: <<script:/full/path/to/my_script.py>>
 ```
+where `my_script.py` would start with a function definition like this:
+```python
+def my_script():
+    ...
+```
+
 
 ## Passing variables around a workflow
 Python scripts that are run by top-level actions and which return values directly
@@ -94,6 +100,24 @@ the task schemas needs to set the input and output type accordingly:
 ```
 
 It might however be more appropriate to save results to files instead.
+
+In addition to passing variables directly,
+tasks can read parameters from (and save to) various file formats including json and HDF5.
+
+An example of passing variables via json files is given in [pass_as_json.yaml](pass_as_json.yaml).
+MatFlow writes the input parameters into a json file `js_0_act_0_inputs.json`,
+and the output into a file `js_0_act_0_outputs.json`.
+These file names are generated automatically,
+and MatFlow keeps track of where the various parameters are stored.
+So if any parameters saved in json files (or passed directly) are needed as input for another function,
+MatFlow can pass them directly or via json as specified in the task schema.
+An example is given of both combinations.
+
+The particular variables names used to pass parameters using json/HDF5 depend on
+which language is being used.
+For example using MATLAB uses this syntax `inputs_JSON_path`, `outputs_HDF5_path`
+instead of the python equivalents `_input_files` and `_output_files`
+See the MTEX examples for more details.
 
 ## Writing a workflow
 A workflow is just a list of tasks, which are run like this
@@ -155,7 +179,7 @@ or if you want task-level detail
 matflow show -f
 ```
 
-This will show the last few workflows. However if you're checking on an older workflow you might need to 
+This will show the last few workflows. However if you're checking on an older workflow you might need to
 tell MatFlow to show more results. This is done using e.g.
 
 ```
