@@ -9,8 +9,7 @@ Be able to:
 
 ## Installation
 
-It is generally recommended to use separate python virtual environments for each project you're working on,
-and to install MatFlow into a new virtual environment for each new project you work on.
+It is generally recommended to use separate python virtual environments for each project you're working on.
 
 ### CSF3
 
@@ -143,10 +142,6 @@ This generally only needs doing once per machine
         command_file_sources: []
         parameter_sources: []
   ```
-
-Once you've set up MatFlow on CSF3 following the steps above,
-you might prefer to reuse the python venv for subsequent projects,
-to avoid reconfiguring for each venv you create.
 
 ## Running MatFlow
 
