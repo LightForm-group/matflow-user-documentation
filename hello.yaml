@@ -6,8 +6,9 @@ template_components:
       default_value: World
     - parameter: greeting
       default_value: Hello
-    actions:
-    - commands:
+    actions:    
+    - requires_dir: true
+      commands:
       - command: echo "<<parameter:greeting>>, <<parameter:name>>!" > printed_string.txt
 
   - objective: python_greet
@@ -19,7 +20,8 @@ template_components:
     outputs:
     - parameter: string_to_print
     actions:
-    - script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/greet.py>>
+    - requires_dir: true
+      script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/greet.py>>
       script_data_in: direct
       script_data_out: direct
       script_exe: python_script
@@ -32,7 +34,8 @@ template_components:
     inputs:
     - parameter: string_to_print
     actions:
-    - commands:
+    - requires_dir: true
+      commands:
       - command: echo "<<parameter:string_to_print>>" > printed_string.txt
 
   # This schema uses the environment `temp_python_env`
