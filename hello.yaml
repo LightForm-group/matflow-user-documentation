@@ -21,7 +21,7 @@ template_components:
     - parameter: string_to_print
     actions:
     - requires_dir: true
-      script: <<script:/home/mbexegc2/projects/lightform/matflow-learning/greet.py>>
+      script: <<script:/home/mbexegc2/projects/lightform/matflow-user-documentation/greet.py>>
       script_data_in: direct
       script_data_out: direct
       script_exe: python_script
